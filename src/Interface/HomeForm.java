@@ -121,7 +121,7 @@ public class HomeForm extends javax.swing.JFrame {
 
         jSeparator1.setForeground(new java.awt.Color(153, 153, 153));
         jPanel1.add(jSeparator1);
-        jSeparator1.setBounds(0, 70, 930, 10);
+        jSeparator1.setBounds(0, 70, 950, 10);
 
         jSeparator3.setForeground(new java.awt.Color(153, 153, 153));
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -226,7 +226,7 @@ public class HomeForm extends javax.swing.JFrame {
         tbluser.setSelectionBackground(new java.awt.Color(102, 102, 255));
         jScrollPane1.setViewportView(tbluser);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 650, 240));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 650, 240));
 
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Fullname:");
@@ -286,7 +286,7 @@ public class HomeForm extends javax.swing.JFrame {
         jPanel2.add(lbimg, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 30, -1, -1));
 
         jSeparator2.setForeground(new java.awt.Color(153, 153, 153));
-        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 720, 10));
+        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 850, 10));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/btn-reset.png"))); // NOI18N
         jButton2.setBorder(null);
@@ -329,7 +329,7 @@ public class HomeForm extends javax.swing.JFrame {
         jPanel2.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 150, 130, -1));
 
         jPanel1.add(jPanel2);
-        jPanel2.setBounds(210, 70, 710, 500);
+        jPanel2.setBounds(210, 70, 730, 500);
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 590));
 
