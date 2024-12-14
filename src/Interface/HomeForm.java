@@ -348,7 +348,6 @@ public class HomeForm extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
-    private String selectedImagePath; // Đường dẫn ảnh được chọn
 
     private void btninsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btninsertActionPerformed
         // TODO add your handling code here:
@@ -376,7 +375,6 @@ public class HomeForm extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }//GEN-LAST:event_btninsertActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -412,6 +410,7 @@ public class HomeForm extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jButton7ActionPerformed
+    private String selectedImagePath; // Đường dẫn ảnh được chọn
 
     /**
      * @param args the command line arguments
