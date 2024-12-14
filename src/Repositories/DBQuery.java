@@ -40,7 +40,7 @@ public class DBQuery {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 al.add(mapResult(rs));
-                
+
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -53,6 +53,7 @@ public class DBQuery {
             for (int i = 0; i < params.length; i++) {
                 ps.setObject(i + 1, params[i]);
             }
+
             return ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -81,8 +82,23 @@ public class DBQuery {
         String query = "UPDATE Users SET Password = 'admin' WHERE UserName = ?";
         return executeUpdate(query, userName);
     }
-    public static void main(String[] args) {
-        
+
+    public int getUserIdByUsername(String username) {
+        String query = "SELECT UserID FROM Users WHERE Username = ?";
+        try (Connection conn = bConnection.getConnect(); PreparedStatement ps = conn.prepareStatement(query)) {
+            ps.setString(1, username);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("UserID");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return -1; // Trả về -1 nếu không tìm thấy
     }
-    
+
+    public static void main(String[] args) {
+
+    }
+
 }

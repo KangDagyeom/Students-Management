@@ -21,8 +21,8 @@ import javax.swing.JFileChooser;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.List;
 import javax.swing.JOptionPane;
-
 
 /**
  *
@@ -37,6 +37,8 @@ public class HomeForm extends javax.swing.JFrame {
     DBQuery bQuery = new DBQuery(bConnection);
     ArrayList<User> al = bQuery.getList();
     DefaultTableModel defaultTableModel = new DefaultTableModel();
+    ArrayList<String> imagePaths = new ArrayList<>();
+    private String selectedImagePath; // Đường dẫn ảnh được chọnF
 
     public HomeForm() {
         initComponents();
@@ -235,6 +237,11 @@ public class HomeForm extends javax.swing.JFrame {
         tbluser.setGridColor(new java.awt.Color(0, 0, 0));
         tbluser.setOpaque(false);
         tbluser.setSelectionBackground(new java.awt.Color(102, 102, 255));
+        tbluser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbluserMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbluser);
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 650, 240));
@@ -320,6 +327,11 @@ public class HomeForm extends javax.swing.JFrame {
         jButton8.setBorder(null);
         jButton8.setContentAreaFilled(false);
         jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, -1, -1));
 
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/btn-update.png"))); // NOI18N
@@ -383,6 +395,9 @@ public class HomeForm extends javax.swing.JFrame {
         try {
             User u = new User(fullName, userName, password, email, birthDate, isActive);
             bQuery.insertUser(u);
+            imagePaths.add(selectedImagePath);
+
+            JOptionPane.showMessageDialog(this, "User inserted successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
             al.clear();
             al = bQuery.getList();
             loadData(al);
@@ -393,9 +408,8 @@ public class HomeForm extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        lbimg.setPreferredSize(new Dimension(200, 100)); // Kích thước cố định 200x200
-        lbimg.setSize(200, 100); // Áp dụng kích thước
-
+        lbimg.setPreferredSize(new Dimension(100, 100)); 
+        lbimg.setSize(100, 100); 
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Select an image");
         int result = fileChooser.showOpenDialog(null);
@@ -438,11 +452,54 @@ public class HomeForm extends javax.swing.JFrame {
         accountFrame.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton6ActionPerformed
-    private String selectedImagePath; // Đường dẫn ảnh được chọn
 
-    /**
-     * @param args the command line arguments
-     */
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void tbluserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbluserMouseClicked
+        // TODO add your handling code here:
+        int row = tbluser.getSelectedRow();
+        if (row >= 0 && row < al.size()) {
+            User user = al.get(row);
+            Integer id = (Integer) tbluser.getValueAt(row, 0);
+            txtid.setText(id.toString());
+            txtfullname.setText(user.getFullName());
+            txtusername.setText(user.getUsername());
+            txtpassword.setText(user.getPassword());
+            txtemail.setText(user.getEmail());
+            txtbirth.setText(user.getBirthDate().toString());
+            if (user.getIsActive().equals(true)) {
+                rdtrue.setSelected(true);
+            } else {
+                rdfalse.setSelected(true);
+            }
+
+            if (row != -1) {
+                String username = tbluser.getValueAt(row, 2).toString();
+
+                // Lấy user ID từ DBQuery
+                int userId = bQuery.getUserIdByUsername(username);
+
+                // Sử dụng userId để ánh xạ ảnh
+                String imagePath = "C:\\Users\\Hyun\\Documents\\NetBeansProjects\\TestASMJava3\\src\\Images\\user-images\\" + userId + ".jpg";
+                File imageFile = new File(imagePath);
+                if (imageFile.exists()) {
+                    ImageIcon imageIcon = new ImageIcon(imagePath);
+                    int width = lbimg.getWidth() > 0 ? lbimg.getWidth() : 100; // Giá trị mặc định
+                    int height = lbimg.getHeight() > 0 ? lbimg.getHeight() : 100; // Giá trị mặc định
+
+                    Image scaledImage = imageIcon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
+                    lbimg.setIcon(new ImageIcon(scaledImage));
+                } else {
+                    lbimg.setIcon(null); // Không có ảnh
+                }
+
+            }
+        }
+
+    }//GEN-LAST:event_tbluserMouseClicked
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
