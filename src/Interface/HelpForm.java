@@ -39,26 +39,11 @@ public class HelpForm extends javax.swing.JFrame {
 
     public HelpForm() {
         initComponents();
-        loadData(al);
+        txtusercontent.setBorder(null);
+        
     }
 
-    public void loadData(ArrayList<User> al) {
-        defaultTableModel = (DefaultTableModel) tbluser.getModel();
-        defaultTableModel.setRowCount(0);
-        int id = 1;
-        for (User user : al) {
-            defaultTableModel.addRow(new Object[]{
-                id,
-                user.getFullName(),
-                user.getUsername(),
-                user.getPassword(),
-                user.getEmail(),
-                user.getBirthDate(),
-                user.getIsActive() ? "Online" : "Offline"
-            });
-            id++;
-        }
-    }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -72,6 +57,8 @@ public class HelpForm extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         buttonGroup1 = new javax.swing.ButtonGroup();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
@@ -84,10 +71,25 @@ public class HelpForm extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        jSeparator5 = new javax.swing.JSeparator();
+        jLabel4 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jSeparator6 = new javax.swing.JSeparator();
+        jLabel5 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        txtusermail = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtusercontent = new javax.swing.JTextArea();
+        jLabel8 = new javax.swing.JLabel();
+        jButton9 = new javax.swing.JButton();
 
         jLabel6.setText("jLabel4");
 
         jTextField3.setText("jTextField1");
+
+        jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -95,11 +97,11 @@ public class HelpForm extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
 
-        jSeparator1.setForeground(new java.awt.Color(153, 153, 153));
+        jSeparator1.setForeground(new java.awt.Color(204, 204, 204));
         jPanel1.add(jSeparator1);
         jSeparator1.setBounds(0, 70, 950, 10);
 
-        jSeparator3.setForeground(new java.awt.Color(153, 153, 153));
+        jSeparator3.setForeground(new java.awt.Color(204, 204, 204));
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jPanel1.add(jSeparator3);
         jSeparator3.setBounds(210, 0, 20, 600);
@@ -156,6 +158,11 @@ public class HelpForm extends javax.swing.JFrame {
         jButton6.setBorder(null);
         jButton6.setContentAreaFilled(false);
         jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton6);
         jButton6.setBounds(10, 220, 200, 70);
 
@@ -174,8 +181,83 @@ public class HelpForm extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setForeground(new java.awt.Color(0, 0, 0));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jSeparator5.setForeground(new java.awt.Color(204, 204, 204));
+        jPanel2.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, 380, 20));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("The system has problem, ask a question here or contact us");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, -1));
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logo-tl.png"))); // NOI18N
+        jButton2.setBorder(null);
+        jButton2.setContentAreaFilled(false);
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 50, 60, 50));
+
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logo-fb.png"))); // NOI18N
+        jButton7.setBorder(null);
+        jButton7.setContentAreaFilled(false);
+        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel2.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 60, 50));
+
+        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logo-x.png"))); // NOI18N
+        jButton8.setBorder(null);
+        jButton8.setContentAreaFilled(false);
+        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel2.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 60, 50));
+
+        jSeparator6.setForeground(new java.awt.Color(204, 204, 204));
+        jPanel2.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 310, 20));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel5.setText("OR");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, -1, -1));
+
+        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
+        jTextField1.setBorder(null);
+        jTextField1.setSelectionColor(new java.awt.Color(255, 255, 255));
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 480, 30));
+
+        txtusermail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/email-field.png"))); // NOI18N
+        jPanel2.add(txtusermail, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, -1, -1));
+
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setBorder(null);
+
+        txtusercontent.setBackground(new java.awt.Color(255, 255, 255));
+        txtusercontent.setColumns(20);
+        txtusercontent.setForeground(new java.awt.Color(0, 0, 0));
+        txtusercontent.setLineWrap(true);
+        txtusercontent.setRows(5);
+        txtusercontent.setText("Go ahead, we're listening...");
+        txtusercontent.setToolTipText("");
+        txtusercontent.setBorder(null);
+        txtusercontent.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        txtusercontent.setSelectionColor(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setViewportView(txtusercontent);
+
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 460, 200));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/content-field.png"))); // NOI18N
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, -1, -1));
+
+        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/btn-submit.png"))); // NOI18N
+        jButton9.setBorder(null);
+        jButton9.setContentAreaFilled(false);
+        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel2.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 450, -1, -1));
+
         jPanel1.add(jPanel2);
-        jPanel2.setBounds(210, 70, 720, 500);
+        jPanel2.setBounds(210, 70, 720, 520);
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 590));
 
@@ -189,11 +271,25 @@ public class HelpForm extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        HomeForm form = new HomeForm();
+        form.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        AccountFrame accountFrame = new AccountFrame();
+        accountFrame.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton6ActionPerformed
     private String selectedImagePath; // Đường dẫn ảnh được chọn
 
     /**
@@ -237,18 +333,33 @@ public class HelpForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextArea txtusercontent;
+    private javax.swing.JLabel txtusermail;
     // End of variables declaration//GEN-END:variables
 }

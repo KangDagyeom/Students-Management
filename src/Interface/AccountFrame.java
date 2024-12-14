@@ -27,7 +27,7 @@ import javax.swing.JOptionPane;
  *
  * @author Hyun
  */
-public class HelpForm extends javax.swing.JFrame {
+public class AccountFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form HomeForm
@@ -37,27 +37,9 @@ public class HelpForm extends javax.swing.JFrame {
     ArrayList<User> al = bQuery.getList();
     DefaultTableModel defaultTableModel = new DefaultTableModel();
 
-    public HelpForm() {
+    public AccountFrame() {
         initComponents();
-        loadData(al);
-    }
 
-    public void loadData(ArrayList<User> al) {
-        defaultTableModel = (DefaultTableModel) tbluser.getModel();
-        defaultTableModel.setRowCount(0);
-        int id = 1;
-        for (User user : al) {
-            defaultTableModel.addRow(new Object[]{
-                id,
-                user.getFullName(),
-                user.getUsername(),
-                user.getPassword(),
-                user.getEmail(),
-                user.getBirthDate(),
-                user.getIsActive() ? "Online" : "Offline"
-            });
-            id++;
-        }
     }
 
     /**
@@ -84,6 +66,16 @@ public class HelpForm extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        txtoldpass = new javax.swing.JPasswordField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        lbold = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        txtnewpass = new javax.swing.JPasswordField();
+        jLabel10 = new javax.swing.JLabel();
+        lbprint = new javax.swing.JLabel();
 
         jLabel6.setText("jLabel4");
 
@@ -95,11 +87,11 @@ public class HelpForm extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
 
-        jSeparator1.setForeground(new java.awt.Color(153, 153, 153));
+        jSeparator1.setForeground(new java.awt.Color(204, 204, 204));
         jPanel1.add(jSeparator1);
         jSeparator1.setBounds(0, 70, 950, 10);
 
-        jSeparator3.setForeground(new java.awt.Color(153, 153, 153));
+        jSeparator3.setForeground(new java.awt.Color(204, 204, 204));
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jPanel1.add(jSeparator3);
         jSeparator3.setBounds(210, 0, 20, 600);
@@ -145,14 +137,19 @@ public class HelpForm extends javax.swing.JFrame {
         jPanel1.add(jButton4);
         jButton4.setBounds(10, 80, 200, 70);
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/btn-help.png"))); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/btn-help-white.png"))); // NOI18N
         jButton5.setBorder(null);
         jButton5.setContentAreaFilled(false);
         jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton5);
         jButton5.setBounds(10, 150, 200, 70);
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/btn-account-white.png"))); // NOI18N
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/btn-account.png"))); // NOI18N
         jButton6.setBorder(null);
         jButton6.setContentAreaFilled(false);
         jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -174,8 +171,57 @@ public class HelpForm extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setForeground(new java.awt.Color(0, 0, 0));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtoldpass.setBackground(new java.awt.Color(255, 255, 255));
+        txtoldpass.setForeground(new java.awt.Color(0, 0, 0));
+        txtoldpass.setText("jPasswordField1");
+        txtoldpass.setBorder(null);
+        txtoldpass.setSelectionColor(new java.awt.Color(255, 255, 255));
+        jPanel2.add(txtoldpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, 310, 20));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("Change password");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, -1, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/lockimg.png"))); // NOI18N
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, -1, -1));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setText("Old password");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, -1, -1));
+
+        lbold.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/content-field-sm.png"))); // NOI18N
+        jPanel2.add(lbold, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, -1, -1));
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setText("New password");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 280, -1, -1));
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/btn-submit-purple.png"))); // NOI18N
+        jButton2.setBorder(null);
+        jButton2.setContentAreaFilled(false);
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 380, -1, -1));
+
+        txtnewpass.setBackground(new java.awt.Color(255, 255, 255));
+        txtnewpass.setForeground(new java.awt.Color(0, 0, 0));
+        txtnewpass.setText("jPasswordField5");
+        txtnewpass.setBorder(null);
+        txtnewpass.setSelectionColor(new java.awt.Color(255, 255, 255));
+        jPanel2.add(txtnewpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, 310, 20));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/content-field-sm.png"))); // NOI18N
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 300, -1, -1));
+
+        lbprint.setBackground(new java.awt.Color(255, 255, 255));
+        lbprint.setForeground(new java.awt.Color(255, 0, 0));
+        jPanel2.add(lbprint, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 360, 310, -1));
+
         jPanel1.add(jPanel2);
-        jPanel2.setBounds(210, 70, 720, 500);
+        jPanel2.setBounds(210, 70, 720, 520);
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 590));
 
@@ -189,11 +235,21 @@ public class HelpForm extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        HomeForm form = new HomeForm();
+        form.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        HelpForm helpForm = new HelpForm();
+        helpForm.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton5ActionPerformed
     private String selectedImagePath; // Đường dẫn ảnh được chọn
 
     /**
@@ -237,18 +293,28 @@ public class HelpForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JLabel lbold;
+    private javax.swing.JLabel lbprint;
+    private javax.swing.JPasswordField txtnewpass;
+    private javax.swing.JPasswordField txtoldpass;
     // End of variables declaration//GEN-END:variables
 }

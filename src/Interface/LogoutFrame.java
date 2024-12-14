@@ -27,7 +27,7 @@ import javax.swing.JOptionPane;
  *
  * @author Hyun
  */
-public class HelpForm extends javax.swing.JFrame {
+public class LogoutFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form HomeForm
@@ -37,28 +37,12 @@ public class HelpForm extends javax.swing.JFrame {
     ArrayList<User> al = bQuery.getList();
     DefaultTableModel defaultTableModel = new DefaultTableModel();
 
-    public HelpForm() {
+    public LogoutFrame() {
         initComponents();
-        loadData(al);
+        
     }
 
-    public void loadData(ArrayList<User> al) {
-        defaultTableModel = (DefaultTableModel) tbluser.getModel();
-        defaultTableModel.setRowCount(0);
-        int id = 1;
-        for (User user : al) {
-            defaultTableModel.addRow(new Object[]{
-                id,
-                user.getFullName(),
-                user.getUsername(),
-                user.getPassword(),
-                user.getEmail(),
-                user.getBirthDate(),
-                user.getIsActive() ? "Online" : "Offline"
-            });
-            id++;
-        }
-    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -95,11 +79,11 @@ public class HelpForm extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
 
-        jSeparator1.setForeground(new java.awt.Color(153, 153, 153));
+        jSeparator1.setForeground(new java.awt.Color(204, 204, 204));
         jPanel1.add(jSeparator1);
         jSeparator1.setBounds(0, 70, 950, 10);
 
-        jSeparator3.setForeground(new java.awt.Color(153, 153, 153));
+        jSeparator3.setForeground(new java.awt.Color(204, 204, 204));
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jPanel1.add(jSeparator3);
         jSeparator3.setBounds(210, 0, 20, 600);
@@ -121,7 +105,7 @@ public class HelpForm extends javax.swing.JFrame {
         jPanel1.add(jLabel3);
         jLabel3.setBounds(400, 20, 350, 33);
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/btn-logout-white.png"))); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/btn-logout.png"))); // NOI18N
         jButton3.setBorder(null);
         jButton3.setContentAreaFilled(false);
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -145,7 +129,7 @@ public class HelpForm extends javax.swing.JFrame {
         jPanel1.add(jButton4);
         jButton4.setBounds(10, 80, 200, 70);
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/btn-help.png"))); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/btn-help-white.png"))); // NOI18N
         jButton5.setBorder(null);
         jButton5.setContentAreaFilled(false);
         jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
