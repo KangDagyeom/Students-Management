@@ -171,10 +171,12 @@ public class LoginForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         String userName = txtuser.getText();
-        String password = txtpass.getText();
+        String password = new String(txtpass.getPassword());
+
         if (userName.isEmpty() || password.isEmpty()) {
             lbprint.setText("(*)Vui lòng nhập vào tên đăng nhập và mật khảu");
         } else {
@@ -182,11 +184,12 @@ public class LoginForm extends javax.swing.JFrame {
                 boolean found = false;
                 for (User user : al) {
                     if (user.getUsername().equals(userName) && user.getPassword().equals(password)) {
+                        found = true;
                         break;
                     }
-                    found = true;
+
                 }
-                if (!found) {
+                if (found == true) {
                     JOptionPane.showMessageDialog(this, "Đăng nhập thành công!");
                     HomeForm form = new HomeForm();
                     form.setVisible(true);

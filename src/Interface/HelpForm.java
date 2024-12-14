@@ -39,7 +39,7 @@ public class HelpForm extends javax.swing.JFrame {
 
     public HelpForm() {
         initComponents();
-        txtusercontent.setBorder(null);
+        
         
     }
 

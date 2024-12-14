@@ -23,7 +23,7 @@ public class DBQuery {
     private User mapResult(ResultSet rs) throws SQLException {
         return new User(
                 rs.getString("FullName"),
-                rs.getString("UserName"),
+                rs.getString("Username"),
                 rs.getString("Password"),
                 rs.getString("Email"),
                 rs.getDate("BirthDate"),
@@ -40,6 +40,7 @@ public class DBQuery {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 al.add(mapResult(rs));
+                
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -80,5 +81,8 @@ public class DBQuery {
         String query = "UPDATE Users SET Password = 'admin' WHERE UserName = ?";
         return executeUpdate(query, userName);
     }
-
+    public static void main(String[] args) {
+        
+    }
+    
 }
