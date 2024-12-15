@@ -7,10 +7,15 @@ package Interface;
 import Model.User;
 import Repositories.DBConnection;
 import Repositories.DBQuery;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
@@ -21,6 +26,17 @@ import javax.swing.JFileChooser;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 import java.time.LocalDate;
+import javax.swing.JOptionPane;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.Address;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.PasswordAuthentication;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.mail.Transport;
 import javax.swing.JOptionPane;
 
 /**
@@ -39,11 +55,8 @@ public class HelpForm extends javax.swing.JFrame {
 
     public HelpForm() {
         initComponents();
-        
-        
-    }
 
-   
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -74,11 +87,11 @@ public class HelpForm extends javax.swing.JFrame {
         jSeparator5 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        btnfacebook = new javax.swing.JButton();
+        btnx = new javax.swing.JButton();
         jSeparator6 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txttoemail = new javax.swing.JTextField();
         txtusermail = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtusercontent = new javax.swing.JTextArea();
@@ -194,19 +207,39 @@ public class HelpForm extends javax.swing.JFrame {
         jButton2.setBorder(null);
         jButton2.setContentAreaFilled(false);
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 50, 60, 50));
 
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logo-fb.png"))); // NOI18N
-        jButton7.setBorder(null);
-        jButton7.setContentAreaFilled(false);
-        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 60, 50));
+        btnfacebook.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logo-fb.png"))); // NOI18N
+        btnfacebook.setBorder(null);
+        btnfacebook.setContentAreaFilled(false);
+        btnfacebook.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnfacebook.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnfacebookMouseClicked(evt);
+            }
+        });
+        btnfacebook.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnfacebookActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnfacebook, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 60, 50));
 
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logo-x.png"))); // NOI18N
-        jButton8.setBorder(null);
-        jButton8.setContentAreaFilled(false);
-        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 60, 50));
+        btnx.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logo-x.png"))); // NOI18N
+        btnx.setBorder(null);
+        btnx.setContentAreaFilled(false);
+        btnx.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnx.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnxActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnx, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 60, 50));
 
         jSeparator6.setForeground(new java.awt.Color(204, 204, 204));
         jPanel2.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 310, 20));
@@ -216,16 +249,16 @@ public class HelpForm extends javax.swing.JFrame {
         jLabel5.setText("OR");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, -1, -1));
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField1.setBorder(null);
-        jTextField1.setSelectionColor(new java.awt.Color(255, 255, 255));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txttoemail.setBackground(new java.awt.Color(255, 255, 255));
+        txttoemail.setForeground(new java.awt.Color(0, 0, 0));
+        txttoemail.setBorder(null);
+        txttoemail.setSelectionColor(new java.awt.Color(255, 255, 255));
+        txttoemail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txttoemailActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 480, 30));
+        jPanel2.add(txttoemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 480, 30));
 
         txtusermail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/email-field.png"))); // NOI18N
         jPanel2.add(txtusermail, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, -1, -1));
@@ -254,6 +287,11 @@ public class HelpForm extends javax.swing.JFrame {
         jButton9.setBorder(null);
         jButton9.setContentAreaFilled(false);
         jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 450, -1, -1));
 
         jPanel1.add(jPanel2);
@@ -280,9 +318,9 @@ public class HelpForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txttoemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttoemailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txttoemailActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
@@ -290,6 +328,82 @@ public class HelpForm extends javax.swing.JFrame {
         accountFrame.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+        String toEmail = txttoemail.getText();
+        String fromEmail = "hungndth04416@fpt.edu.vn";
+        String appPassword = "bcgj wrsn jnna byql";
+        String subjects = "User reports about software issues";
+
+        Properties p = new Properties();
+        p.put("mail.smtp.auth", "true"); // authentication
+        p.put("mail.smtp.starttls.enable", "true"); // TLS to hash and security
+        p.put("mail.smtp.host", "smtp.gmail.com"); // SMTP server
+        p.put("mail.smtp.port", "587"); // SMTP port for TLS protocol
+        p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+
+        Session s = Session.getDefaultInstance(p, new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(fromEmail, appPassword);
+            }
+        });
+        try {
+            MimeMessage message = new MimeMessage(s);
+            message.setFrom(new InternetAddress(fromEmail));
+            message.addRecipients(Message.RecipientType.TO, new InternetAddress(toEmail).toString());
+            message.setSubject(subjects);
+            message.setText(txtusercontent.getText());
+            Transport.send(message);
+            JOptionPane.showMessageDialog(this, "The email has been sent to " + toEmail);
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "The email has not been sent to " + toEmail);
+        }
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void btnfacebookMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnfacebookMouseClicked
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_btnfacebookMouseClicked
+
+    private void btnfacebookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfacebookActionPerformed
+        // TODO add your handling code here:
+        btnfacebook.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String facebookUrl = "https://www.facebook.com/unicon4on/";
+                try {
+                    Desktop.getDesktop().browse(new URI(facebookUrl));
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "Failed to open URL!", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+
+        });
+    }//GEN-LAST:event_btnfacebookActionPerformed
+
+    private void btnxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxActionPerformed
+        // TODO add your handling code here:
+        btnx.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String xUrl = "https://x.com/testingxw354";
+                try {
+                    Desktop.getDesktop().browse(new URI(xUrl));
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+            
+        });
+    }//GEN-LAST:event_btnxActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "I don't have telegram man :))");
+    }//GEN-LAST:event_jButton2ActionPerformed
     private String selectedImagePath; // Đường dẫn ảnh được chọn
 
     /**
@@ -331,6 +445,8 @@ public class HelpForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnfacebook;
+    private javax.swing.JButton btnx;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -338,8 +454,6 @@ public class HelpForm extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -357,8 +471,8 @@ public class HelpForm extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField txttoemail;
     private javax.swing.JTextArea txtusercontent;
     private javax.swing.JLabel txtusermail;
     // End of variables declaration//GEN-END:variables
