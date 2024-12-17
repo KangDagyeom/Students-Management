@@ -310,6 +310,11 @@ public class HomeForm extends javax.swing.JFrame {
         jButton2.setBorder(null);
         jButton2.setContentAreaFilled(false);
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 180, -1, -1));
 
         btninsert.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/btn-insert.png"))); // NOI18N
@@ -338,6 +343,11 @@ public class HomeForm extends javax.swing.JFrame {
         jButton9.setBorder(null);
         jButton9.setContentAreaFilled(false);
         jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, -1, -1));
 
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/btn-upload.png"))); // NOI18N
@@ -370,8 +380,8 @@ public class HomeForm extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        LogoutFrame logoutFrame = new LogoutFrame();
-        logoutFrame.setVisible(true);
+        LoginForm loginForm = new LoginForm();
+        loginForm.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -455,6 +465,9 @@ public class HomeForm extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
+        String username = JOptionPane.showInputDialog("Enter username you want to delete: ");
+        bQuery.deleteUser(username);
+        JOptionPane.showMessageDialog(this, "Deleted user successfully!");
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void tbluserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbluserMouseClicked
@@ -499,6 +512,21 @@ public class HomeForm extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_tbluserMouseClicked
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        txtfullname.setText(null);
+        txtusername.setText(null);
+        txtpassword.setText(null);
+        txtemail.setText(null);
+        txtbirth.setText(null);
+        txtid.setText(null);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

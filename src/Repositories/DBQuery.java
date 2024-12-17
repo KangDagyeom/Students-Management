@@ -83,6 +83,11 @@ public class DBQuery {
         return executeUpdate(query, userName);
     }
 
+    public int deleteUser(String username) {
+        String query = "DELETE FROM Users WHERE Username = ?";
+        return executeUpdate(query, username);
+    }
+
     public int getUserIdByUsername(String username) {
         String query = "SELECT UserID FROM Users WHERE Username = ?";
         try (Connection conn = bConnection.getConnect(); PreparedStatement ps = conn.prepareStatement(query)) {
