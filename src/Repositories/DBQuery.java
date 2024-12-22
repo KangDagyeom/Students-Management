@@ -102,8 +102,9 @@ public class DBQuery {
         return -1; // Trả về -1 nếu không tìm thấy
     }
 
-    public static void main(String[] args) {
-
+    public int changePassword(String userName, String newPassword) {
+        String query = "UPDATE Users SET Password = ? WHERE Username = ?";
+        return executeUpdate(query, newPassword, userName);
     }
 
 }

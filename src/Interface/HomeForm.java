@@ -268,6 +268,11 @@ public class HomeForm extends javax.swing.JFrame {
 
         txtpassword.setBackground(new java.awt.Color(204, 204, 204));
         txtpassword.setForeground(new java.awt.Color(0, 0, 0));
+        txtpassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtpasswordActionPerformed(evt);
+            }
+        });
         jPanel2.add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, 160, -1));
 
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
@@ -527,6 +532,10 @@ public class HomeForm extends javax.swing.JFrame {
         txtbirth.setText(null);
         txtid.setText(null);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void txtpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtpasswordActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

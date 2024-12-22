@@ -36,10 +36,10 @@ public class AccountFrame extends javax.swing.JFrame {
     DBQuery bQuery = new DBQuery(bConnection);
     ArrayList<User> al = bQuery.getList();
     DefaultTableModel defaultTableModel = new DefaultTableModel();
-
+    
     public AccountFrame() {
         initComponents();
-
+        
     }
 
     /**
@@ -153,6 +153,11 @@ public class AccountFrame extends javax.swing.JFrame {
         jButton6.setBorder(null);
         jButton6.setContentAreaFilled(false);
         jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton6);
         jButton6.setBounds(10, 220, 200, 70);
 
@@ -177,6 +182,11 @@ public class AccountFrame extends javax.swing.JFrame {
         txtoldpass.setText("jPasswordField1");
         txtoldpass.setBorder(null);
         txtoldpass.setSelectionColor(new java.awt.Color(255, 255, 255));
+        txtoldpass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtoldpassActionPerformed(evt);
+            }
+        });
         jPanel2.add(txtoldpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, 310, 20));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -204,6 +214,11 @@ public class AccountFrame extends javax.swing.JFrame {
         jButton2.setBorder(null);
         jButton2.setContentAreaFilled(false);
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 380, -1, -1));
 
         txtnewpass.setBackground(new java.awt.Color(255, 255, 255));
@@ -253,6 +268,42 @@ public class AccountFrame extends javax.swing.JFrame {
         helpForm.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void txtoldpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtoldpassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtoldpassActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        String oldPassword = new String(txtoldpass.getPassword());
+        String newPassword = new String(txtnewpass.getPassword());
+        try {
+            boolean found = false;
+            User u = null;
+            for (User user : al) {
+                if (user.getPassword().equals(oldPassword)) {
+                    u = user;
+                    found = true;
+                    break;
+                }
+            }
+            
+            if (found == true) {
+                bQuery.changePassword(u.getUsername(), newPassword);
+                JOptionPane.showMessageDialog(this, "User has been found! and Changed the password!");
+                lbprint.setText(null);
+            } else {
+                lbprint.setText("(*)Your old password is wrong,double-check please!");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
     private String selectedImagePath; // Đường dẫn ảnh được chọn
 
     /**
