@@ -1,2 +1,2 @@
 # Students-Management
-Using Figma ,Java Swing and SQL Server
+Using Figma ,Java Swing and Mssql
